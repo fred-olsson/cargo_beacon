@@ -1,0 +1,12 @@
+<div>
+  <h2><u>{{title_text}}</u></h2>
+  <ul>
+    <li *ngFor="let beacon of beaconData">
+      <button type="button" (click)="getMap(beacon.lat, beacon.long, beacon.id, gmap.getMap())">{{beacon.id}}</button>
+    </li>
+  </ul>
+</div>
+<div>
+  <p-gmap #gmap [options]="options" [style]="{'width':'480px','height':'320px'}" ></p-gmap>
+</div>
+

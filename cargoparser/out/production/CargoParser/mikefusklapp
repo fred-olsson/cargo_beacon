@@ -1,0 +1,36 @@
+package com.hiotech.cargobeacon;
+
+import java.util.Date;
+
+public class AccEntry {
+    public Date timeStamp;
+    public long millis;
+    public float X;
+    public float Y;
+    public float Z;
+}
+
+
+    det här är ett accelerations entry i android..
+
+        ser datat i arrayen vettigt ut är det bara iterera igenom om arrayen heter byte[] p_data..
+        skulle man t.ex. kunna göra något i stil med
+
+        List<AccEntry> accList = new ArrayList<AccEntry>();
+
+        for (int  = 0; i < p_data.length; i++) {
+            if (p_data[i] == (byte) 0xAB) {
+            float acc_x = //fyll på data p_data[i + 1]  och så vidare
+            /* en massa smarta saker för att hämta allt i paketet*/
+            AccEntry ae = new AccEntry();
+            ae.X = float acc_x;
+            accList.add(ae);
+            //kanske öka på i om man inte vill titta på de bytes man redan hämtat i paketet i+7
+            }
+        }
+
+        för att plocka data in i saker kan man vilja bitshifta en del
+        long timestamp = p_data[i + 4] & 0xFF; timestamp |= (p_data[i + 5] << 8) & 0xFFFF; och så vidare
+        var det vettig info för att komma vidare ?
+        på byte arrayer och sådant i intellij kan du göra view as hex och liknande i debuggern också
+        men det har du kanske sprungit på redan
